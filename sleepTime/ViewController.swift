@@ -17,14 +17,20 @@ class ViewController: UIViewController {
     var sleepFour = ""
     var sleepFive = ""
     var sleepSix = ""
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
             calculateOutlet.isEnabled = false
+            dataPickerOutlet.textColor = .white
         
     }
 
+    
     @IBOutlet var wakeUpTo: UILabel!
+    
+    @IBOutlet var dataPickerOutlet: UIDatePicker!
     
     @IBAction func dataPicker(_ sender: UIDatePicker) {
         
@@ -35,7 +41,6 @@ class ViewController: UIViewController {
         wakeUpTo.text = "Хочу проснуться в \(oneLabel)"
         calculateOutlet.isEnabled = true
        
-        
     }
     
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -86,14 +91,25 @@ class ViewController: UIViewController {
         sleepFour = dateFormatter.string(from: endDate4!)
         sleepFive = dateFormatter.string(from: endDate5!)
         sleepSix = dateFormatter.string(from: endDate6!)
-        
-        
-        
-    }
-    @IBAction func sleepNow(_ sender: UIButton) {
+    
     }
     
+    
+    @IBAction func sleepNow(_ sender: UIButton) {
+    }
     
 
 }
 
+//расширение для установки цвета datePicker
+extension UIDatePicker {
+
+var textColor: UIColor? {
+    set {
+        setValue(newValue, forKeyPath: "textColor")
+    }
+    get {
+        return value(forKeyPath: "textColor") as? UIColor
+    }
+  }
+}
