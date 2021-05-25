@@ -145,12 +145,6 @@ class ViewController: UIViewController {
     }
 
     @IBOutlet var calculateOutlet: UIButton!
-    
-    @IBAction func calculate(_ sender: UIButton) {
-        }
-    @IBAction func sleepNow(_ sender: UIButton) {
-    }
-
 }
 
 //расширение для установки цвета datePicker
