@@ -9,25 +9,24 @@ import UIKit
 
 class TimeViewController: UIViewController {
 
-    var oneButton = ""
-    var twoButton = ""
-    var threeButton = ""
-    var fourButton = ""
-    var fiveButton = ""
-    var sixButton = ""
+    var sleeper = [1: "", 2: "", 3: "", 4: "", 5: "", 6: ""]
+    var sleepNeed = ""
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        oneTime.text = oneButton
-        twoTime.text = twoButton
-        threeTime.text = threeButton
-        fourTime.text = fourButton
-        fiveTime.text = fiveButton
-        sixTime.text = sixButton
-        // Do any additional setup after loading the view.
+        oneTime.text = sleeper[1]
+        twoTime.text = sleeper[2]
+        threeTime.text = sleeper[3]
+        fourTime.text = sleeper[4]
+        fiveTime.text = sleeper[5]
+        sixTime.text = sleeper[6]
+        needSleep.text = sleepNeed
+    
     }
     
+    @IBOutlet var needSleep: UILabel!
     @IBAction func backButton(_ sender: UIButton) {
         dismiss(animated: true)
     }
