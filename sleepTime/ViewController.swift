@@ -10,85 +10,11 @@ import UIKit
 class ViewController: UIViewController {
 
     var oneLabel = ""
-    
+    let twoLabel = Date()
     let dateFormatter = DateFormatter()
     //словари для хранения времени
     var sleepArr = [1: "", 2: "", 3: "", 4: "", 5: "", 6: ""]
     var sleepArray = [1: "", 2: "", 3: "", 4: "", 5: "", 6: ""]
-    
-    //функция которая вычисляет время и добавляет в словарь
-    func countingTime() {
-        let twoLabel = Date()
-        let calendar = Calendar.current
-        
-        dateFormatter.timeStyle = DateFormatter.Style.short
-        let endTimeString = dateFormatter.string(from: twoLabel)
-        
-        let endTime = dateFormatter.date(from: endTimeString)
-        
-        let endDate1 = calendar.date(byAdding: .hour,
-                                     value: 9,
-                                     to: endTime!)
-        let endDate2 = calendar.date(byAdding: .minute,
-                                     value: 450,
-                                     to: endTime!)
-        let endDate3 = calendar.date(byAdding: .minute,
-                                     value: 360,
-                                     to: endTime!)
-        let endDate4 = calendar.date(byAdding: .minute,
-                                     value: 270,
-                                     to: endTime!)
-        let endDate5 = calendar.date(byAdding: .minute,
-                                     value: 180, to:
-                                        endTime!)
-        let endDate6 = calendar.date(byAdding: .minute,
-                                     value: 90,
-                                     to: endTime!)
-
-        sleepArray[6] = dateFormatter.string(from: endDate1!)
-        sleepArray[5] = dateFormatter.string(from: endDate2!)
-        sleepArray[4] = dateFormatter.string(from: endDate3!)
-        sleepArray[3] = dateFormatter.string(from: endDate4!)
-        sleepArray[2] = dateFormatter.string(from: endDate5!)
-        sleepArray[1] = dateFormatter.string(from: endDate6!)
-                
-    }
-    
-    func countTime() {
-        let pickerDate = oneLabel
-        
-        
-        dateFormatter.timeStyle = DateFormatter.Style.short
-        let endTimeString = dateFormatter.date(from: pickerDate)
-        let calendar = Calendar.current
-        
-        let endDate1 = calendar.date(byAdding: .hour,
-                                     value: -9,
-                                     to: endTimeString!)
-        let endDate2 = calendar.date(byAdding: .minute,
-                                     value: -450,
-                                     to: endTimeString!)
-        let endDate3 = calendar.date(byAdding: .minute,
-                                     value: -360,
-                                     to: endTimeString!)
-        let endDate4 = calendar.date(byAdding: .minute,
-                                     value: -270,
-                                     to: endTimeString!)
-        let endDate5 = calendar.date(byAdding: .minute,
-                                     value: -180, to:
-                                        endTimeString!)
-        let endDate6 = calendar.date(byAdding: .minute,
-                                     value: -90,
-                                     to: endTimeString!)
-        
-        sleepArr[1] = dateFormatter.string(from: endDate1!)
-        sleepArr[2] = dateFormatter.string(from: endDate2!)
-        sleepArr[3] = dateFormatter.string(from: endDate3!)
-        sleepArr[4] = dateFormatter.string(from: endDate4!)
-        sleepArr[5] = dateFormatter.string(from: endDate5!)
-        sleepArr[6] = dateFormatter.string(from: endDate6!)
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +25,67 @@ class ViewController: UIViewController {
         
     }
     
+    //функция которая вычисляет время и добавляет в словарь
+    func countingTime() {
+        
+        let endTimeString = dateFormatter.string(from: twoLabel)
+        let endTime = dateFormatter.date(from: endTimeString)
+        dateFormatter.timeStyle = DateFormatter.Style.short
+
+        sleepArray[6] = dateFormatter.string(from: getDate(byAdding: .minute,
+                                                           value: 540,
+                                                           endTime: endTime!))
+        sleepArray[5] = dateFormatter.string(from: getDate(byAdding: .minute,
+                                                           value: 450,
+                                                           endTime: endTime!))
+        sleepArray[4] = dateFormatter.string(from: getDate(byAdding: .minute,
+                                                           value: 360,
+                                                           endTime: endTime!))
+        sleepArray[3] = dateFormatter.string(from: getDate(byAdding: .minute,
+                                                           value: 270,
+                                                           endTime: endTime!))
+        sleepArray[2] = dateFormatter.string(from: getDate(byAdding: .minute,
+                                                           value: 180,
+                                                           endTime: endTime!))
+        sleepArray[1] = dateFormatter.string(from: getDate(byAdding: .minute,
+                                                           value: 90,
+                                                           endTime: endTime!))
+                
+    }
+    
+    func countTime() {
+        
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        let endTimeString = dateFormatter.date(from: oneLabel)
+        
+        sleepArr[1] = dateFormatter.string(from: getDate(byAdding: .minute,
+                                                         value: -540,
+                                                         endTime: endTimeString!))
+        sleepArr[2] = dateFormatter.string(from: getDate(byAdding: .minute,
+                                                         value: -450,
+                                                         endTime: endTimeString!))
+        sleepArr[3] = dateFormatter.string(from: getDate(byAdding: .minute,
+                                                         value: -360,
+                                                         endTime: endTimeString!))
+        sleepArr[4] = dateFormatter.string(from: getDate(byAdding: .minute,
+                                                         value: -270,
+                                                         endTime: endTimeString!))
+        sleepArr[5] = dateFormatter.string(from: getDate(byAdding: .minute,
+                                                         value: -180,
+                                                         endTime: endTimeString!))
+        sleepArr[6] = dateFormatter.string(from: getDate(byAdding: .minute,
+                                                         value: -90,
+                                                         endTime: endTimeString!))
+    }
+    
+    func getDate(byAdding: Calendar.Component, value: Int, endTime: Date) -> Date! {
+        let calendar = Calendar.current
+
+        let endDate = calendar.date(byAdding: byAdding, value: value, to: endTime)
+        return endDate
+    }
+    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "calculateTime" {
