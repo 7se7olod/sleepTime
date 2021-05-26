@@ -30,56 +30,33 @@ class ViewController: UIViewController {
         
         dateFormatter.timeStyle = DateFormatter.Style.short
 
-        sleepArray.insert(dateFormatter.string(from: getDate(byAdding: .minute,
-                                                             value: 540,
-                                                             endTime: twoLabel)), at: 0)
-        sleepArray.insert(dateFormatter.string(from: getDate(byAdding: .minute,
-                                                             value: 450,
-                                                             endTime: twoLabel)), at: 1)
-        sleepArray.insert(dateFormatter.string(from: getDate(byAdding: .minute,
-                                                            value: 360,
-                                                            endTime: twoLabel)), at: 2)
-        sleepArray.insert(dateFormatter.string(from: getDate(byAdding: .minute,
-                                                            value: 270,
-                                                            endTime: twoLabel)), at: 3)
-        sleepArray.insert(dateFormatter.string(from: getDate(byAdding: .minute,
-                                                            value: 180,
-                                                            endTime: twoLabel)), at: 4)
-        sleepArray.insert(dateFormatter.string(from: getDate(byAdding: .minute,
-                                                            value: 90,
-                                                            endTime: twoLabel)), at: 5)
+        sleepArray.insert(getDate(byAdding: .minute, value: 540, endTime: twoLabel), at: 0)
+        sleepArray.insert(getDate(byAdding: .minute, value: 450, endTime: twoLabel), at: 1)
+        sleepArray.insert(getDate(byAdding: .minute, value: 360, endTime: twoLabel), at: 2)
+        sleepArray.insert(getDate(byAdding: .minute,value: 270, endTime: twoLabel), at: 3)
+        sleepArray.insert(getDate(byAdding: .minute, value: 180, endTime: twoLabel), at: 4)
+        sleepArray.insert(getDate(byAdding: .minute, value: 90, endTime: twoLabel), at: 5)
                 
     }
     
     func countTime() {
         
         dateFormatter.timeStyle = DateFormatter.Style.short
-        let endDateOne = dateFormatter.date(from: oneLabel )
+        let endDateOne = dateFormatter.date(from: oneLabel)
         
-        sleepArr.insert(dateFormatter.string(from: getDate(byAdding: .minute,
-                                                           value: -540,
-                                                           endTime: endDateOne)), at: 0)
-        sleepArr.insert(dateFormatter.string(from: getDate(byAdding: .minute,
-                                                           value: -450,
-                                                           endTime: endDateOne!)), at: 1)
-        sleepArr.insert(dateFormatter.string(from: getDate(byAdding: .minute,
-                                                           value: -360,
-                                                           endTime: endDateOne!)), at: 2)
-        sleepArr.insert(dateFormatter.string(from: getDate(byAdding: .minute,
-                                                            value: -270,
-                                                            endTime: endDateOne!)), at: 3)
-        sleepArr.insert(dateFormatter.string(from: getDate(byAdding: .minute,
-                                                            value: -180,
-                                                            endTime: endDateOne!)), at: 4)
-        sleepArr.insert(dateFormatter.string(from: getDate(byAdding: .minute,
-                                                            value: -90,
-                                                            endTime: endDateOne!)), at: 5)
+        sleepArr.insert(getDate(byAdding: .minute, value: -540, endTime: endDateOne), at: 0)
+        sleepArr.insert(getDate(byAdding: .minute, value: -450, endTime: endDateOne!), at: 1)
+        sleepArr.insert(getDate(byAdding: .minute, value: -360, endTime: endDateOne!), at: 2)
+        sleepArr.insert(getDate(byAdding: .minute, value: -270, endTime: endDateOne!), at: 3)
+        sleepArr.insert(getDate(byAdding: .minute, value: -180, endTime: endDateOne!), at: 4)
+        sleepArr.insert(getDate(byAdding: .minute, value: -90, endTime: endDateOne!), at: 5)
     }
     
-    func getDate(byAdding: Calendar.Component, value: Int, endTime: Date!) -> Date! {
+    func getDate(byAdding: Calendar.Component, value: Int, endTime: Date!) -> String {
         let calendar = Calendar.current
         let endDate = calendar.date(byAdding: byAdding, value: value, to: endTime)
-        return endDate
+        let endDate1 = dateFormatter.string(from: endDate!)
+        return endDate1
     }
     
 
